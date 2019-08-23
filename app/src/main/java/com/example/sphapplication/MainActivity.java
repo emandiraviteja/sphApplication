@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity
        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            Log.e("error", error.toString());
             if (!showCachedResponse()) {
                 showError(error);
             }
@@ -131,19 +130,13 @@ public class MainActivity extends AppCompatActivity
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("volumedata.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
-
-            Log.e("stored", "stored");
         }
         catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
         }
     }
 
     //Retreving Json data from storing file
     private String readFromCache() throws IOException {
-
-        Log.e("from stored", "from stored");
-
         InputStream inputStream = this.openFileInput("volumedata.txt");
 
         if (inputStream != null) {
@@ -155,11 +148,9 @@ public class MainActivity extends AppCompatActivity
             while ((receiveString = bufferedReader.readLine()) != null) {
                 stringBuilder.append(receiveString);
             }
-
             inputStream.close();
             return stringBuilder.toString();
         }
-
         return null;
     }
 
@@ -172,14 +163,6 @@ public class MainActivity extends AppCompatActivity
 
     // Showing the status in Snackbar
     private void showSnack(String message) {
-        /*Snackbar snackbar = Snackbar
-                .make(findViewById(R.id.fab), message, Snackbar.LENGTH_LONG);
-
-        View sbView = snackbar.getView();
-        TextView textView = (TextView) sbView.findViewById(R.id.snackbar_text);
-        textView.setTextColor(Color.RED);
-        snackbar.show();*/
-
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
         Snackbar snackbar = Snackbar
@@ -195,7 +178,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         MyApplication.getInstance().setConnectivityListener(this);
     }
-
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {

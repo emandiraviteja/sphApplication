@@ -41,7 +41,6 @@ public class SPHService {
             boolean declined = false;
             if (prevVolume != null) {
                 declined = currentVolume.compareTo(prevVolume) == -1;
-                Log.e("decline", quarter + " => " + prevVolume.toString() + " => " + currentVolume.toString() + " " + new Boolean(declined));
             }
 
             if (!yearMap.containsKey(year)) {

@@ -41,7 +41,6 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.YearLi
             holder.declined.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Toast.makeText(holder.declined.getContext(), "Year " + item.getYear() + " was clicked!", Toast.LENGTH_SHORT).show();
                 }
             });
