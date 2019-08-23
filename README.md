@@ -23,7 +23,7 @@ On completion of the execute of above command coverage report will be avaialble 
 
     app\build\reports\coverage\debug\index.html
 
-Pre-generated coverage report is commited in the repo and it's available at 
+Pre-generated coverage report is committed in the repo and it's available at 
 
     docs\coverage\index.html
 
