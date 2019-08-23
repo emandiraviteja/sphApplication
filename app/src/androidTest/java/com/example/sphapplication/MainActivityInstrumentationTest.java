@@ -125,4 +125,6 @@ public class MainActivityInstrumentationTest {
         boolean isConnected = cm.getActiveNetworkInfo().isConnectedOrConnecting();
         Assert.assertEquals(true, isConnected);
     }
+
+
 }

@@ -40,4 +40,11 @@ public class SPHServiceTest {
         assertFalse(yearList.get("2004").isDecilned());
         assertTrue(yearList.get("2005").isDecilned());
     }
+
+    /*@Test
+    public void testul(){
+        MainActivity mainActivity = new MainActivity();
+        IOException ioException = new IOException();
+        mainActivity.showError(ioException);
+    }*/
 }
