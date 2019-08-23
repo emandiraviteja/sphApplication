@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity
             try {
                 loadUrlData();
             } catch (JSONException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -76,15 +75,21 @@ public class MainActivity extends AppCompatActivity
         requestQueue.add(request);
     }
 
-    public void showError(VolleyError error) {
+    public void showError(Exception error) {
         if (error instanceof ServerError) {
-            showSnack("ServerError");
+            showSnack("Server error");
         } else if (error instanceof TimeoutError) {
-            showSnack("TimeoutError");
+            showSnack("Timeout error");
         } else if (error instanceof NetworkError) {
             showSnack("Sorry! Not connected to internet");
         } else if (error instanceof ParseError) {
-            showSnack("ParseError");
+            showSnack("Parse error");
+        } else if (error instanceof IOException) {
+            showSnack("File error");
+        } else if (error instanceof JSONException){
+            showSnack("Data parse error");
+        } else {
+            showSnack(error.getMessage());
         }
     }
 
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity
             String response = readFromCache();
             return showResponse(response);
         } catch (IOException e) {
-            e.printStackTrace();
+            showError(e);
             checkConnection();
         }
         return false;
@@ -105,7 +110,7 @@ public class MainActivity extends AppCompatActivity
             displayUI(stringBigDecimalTreeMap);
             return true;
         } catch (JSONException e) {
-            e.printStackTrace();
+            showError(e);
         }
         return false;
     }
