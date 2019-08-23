@@ -76,7 +76,7 @@ public class MainActivityInstrumentationTest {
         assertEquals(2, itemCount);
     }
 
-    public void testLoadUrl() throws Throwable {
+   /* public void testLoadUrl() throws Throwable {
         activityTestRule.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -92,7 +92,7 @@ public class MainActivityInstrumentationTest {
                 }
             }
         });
-    }
+    }*/
 
     @Test
     public void isConnectedOrConnectingReturnsTrueWhenInternetIsAvailable() throws Exception {
