@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
 import org.json.JSONException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -187,6 +188,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
+    }
+
+    public void clearCache(){
+        String dir = getFilesDir().getAbsolutePath();
+        File file = new File(dir, "volumedata.txt");
+        boolean result = file.delete();
+        Log.w("Delete Check", "File deleted: " + dir + "/volumedata " + result);
     }
 }
 

@@ -26,6 +26,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class MainActivityInstrumentationTest {
     public MainActivityInstrumentationTest() {
@@ -35,6 +36,20 @@ public class MainActivityInstrumentationTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule =
             new ActivityTestRule<>(MainActivity.class);
+
+    @Test
+    public void testNoCache() throws Throwable {
+        activityTestRule.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                activityTestRule.getActivity().showResponse("{\"result\": {\"records\": []}}");
+                activityTestRule.getActivity().clearCache();
+                activityTestRule.getActivity().showCachedResponse();
+            }
+        });
+        RecyclerView view = (RecyclerView) activityTestRule.getActivity().findViewById(R.id.recycler);
+        assertEquals(view.getAdapter().getItemCount(), 0);
+    }
 
     public int getCardCount(final String json) throws Throwable {
 
@@ -75,6 +90,8 @@ public class MainActivityInstrumentationTest {
         int itemCount = view.getAdapter().getItemCount();
         assertEquals(2, itemCount);
     }
+
+
 
     @Test
     public void testMultiQuaterOfSameYear() throws Throwable {
