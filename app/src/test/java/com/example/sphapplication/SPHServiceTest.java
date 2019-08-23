@@ -30,7 +30,7 @@ public class SPHServiceTest {
         //Different quaters of same year should return 1 record.
         assertEquals(sphService.parseJSON("{\"result\": {\"records\": [{\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q1\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q2\", \"id\": \"2\" }]}}").size(), 1);
         //Quarters from tow years should return 2 records.
-        assertEquals(sphService.parseJSON("{\"result\": {\"records\": [{\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q1\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"1\", \"quarter\": \"2005-q2\", \"id\": \"2\" }]}}").size(), 2);
+        assertEquals(sphService.parseJSON("{\"result\": {\"records\": [{\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q1\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q2\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"1\", \"quarter\": \"2005-q2\", \"id\": \"2\" }]}}").size(), 2);
     }
 
     @Test

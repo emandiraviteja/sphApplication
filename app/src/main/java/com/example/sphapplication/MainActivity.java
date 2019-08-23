@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity
             outputStreamWriter.close();
         }
         catch (IOException e) {
+            showError(e);
         }
     }
 

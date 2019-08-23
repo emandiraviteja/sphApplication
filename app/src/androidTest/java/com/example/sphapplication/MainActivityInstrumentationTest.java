@@ -76,6 +76,12 @@ public class MainActivityInstrumentationTest {
         assertEquals(2, itemCount);
     }
 
+    @Test
+    public void testMultiQuaterOfSameYear() throws Throwable {
+        int cardCount = getCardCount("{\"result\": {\"records\": [{\"volume_of_mobile_data\": \"1\", \"quarter\": \"2004-q1\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"0.5\", \"quarter\": \"2004-q2\", \"id\": \"2\" }, {\"volume_of_mobile_data\": \"1\", \"quarter\": \"2005-q2\", \"id\": \"2\" }]}}");
+        assertEquals(2, cardCount);
+    }
+
    /* public void testLoadUrl() throws Throwable {
         activityTestRule.runOnUiThread(new Runnable() {
             @Override
