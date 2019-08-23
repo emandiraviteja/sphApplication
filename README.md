@@ -24,3 +24,5 @@ On completion of the execute of above command coverage report will be avaialble 
     app\build\reports\coverage\debug\index.html
 
 Right now UI tests cover about 76% of the code.
+
+![alt text](https://raw.githubusercontent.com/emandiraviteja/sphApplication/master/docs/coverage.PNG)
